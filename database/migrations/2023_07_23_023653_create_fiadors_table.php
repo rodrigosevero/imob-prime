@@ -44,7 +44,7 @@ return new class extends Migration
             $table->string('holerite_1')->nullable();
             $table->string('holerite_2')->nullable();
             $table->string('holerite_3')->nullable();
-            // $table->string('matricula_imovel')->nullable();
+            $table->string('matricula_imovel')->nullable();
 
             $table->timestamps();
             $table->softDeletes(); // Adicionando a coluna para Soft Deletes

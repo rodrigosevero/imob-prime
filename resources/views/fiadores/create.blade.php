@@ -307,6 +307,15 @@
                                 @enderror
                             </div>
 
+                            <div class="mb-3">
+                                <label for="holerite_3" class="form-label">Matrícula do imóvel atualizada:</label>
+                                <input type="file" class="form-control @error('matricula_imovel') is-invalid @enderror"
+                                    id="matricula_imovel" name="matricula_imovel">
+                                @error('matricula_imovel')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Cadastrar Fiador</button>
                                 <a href="{{ url('/') }}" class="btn btn-secondary">Voltar</a>

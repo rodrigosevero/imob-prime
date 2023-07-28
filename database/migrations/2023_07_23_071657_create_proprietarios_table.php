@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('proprietarios', function (Blueprint $table) {
             $table->id();
             $table->string('nome_completo');
-            $table->string('cpf');
-            $table->string('nacionalidade');
+            $table->string('cpf');            
             $table->string('email')->nullable();
             $table->string('telefone_fixo')->nullable();
             $table->string('telefone_celular')->nullable();
             $table->string('profissao')->nullable();
+            $table->string('estado_civil')->nullable();
 
             $table->string('cep')->nullable();
             $table->string('logradouro')->nullable();

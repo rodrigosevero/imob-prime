@@ -17,7 +17,7 @@ class ProprietarioController extends Controller
         if (!Auth::check()) {
             return redirect('/');
         }
-        $proprietarios = Proprietario::all();
+        $proprietarios = Proprietario::orderBy('id', 'desc')->get();
         return view('proprietarios.index', compact('proprietarios'));
     }
 
@@ -32,12 +32,12 @@ class ProprietarioController extends Controller
         // Salvar os dados do formulário no banco de dados
         $proprietario = Proprietario::create([
             'nome_completo' => $request->input('nome_completo'),
-            'cpf' => $request->input('cpf'),
-            'nacionalidade' => $request->input('nacionalidade'),
+            'cpf' => $request->input('cpf'),            
             'email' => $request->input('email'),
             'telefone_fixo' => $request->input('telefone_fixo'),
             'telefone_celular' => $request->input('telefone_celular'),
             'profissao' => $request->input('profissao'),
+            'estado_civil' => $request->input('estado_civil'),
             'cep' => $request->input('cep'),
             'logradouro' => $request->input('logradouro'),
             'numero' => $request->input('numero'),
@@ -82,7 +82,7 @@ class ProprietarioController extends Controller
         // Salvar as alterações no objeto $proprietario
         $proprietario->save();
         // Redirecionar para alguma página após o cadastro (opcional)
-        return redirect()->back()->with('success', 'Proprietário cadastrado com sucesso!');
+        return redirect()->back()->with('success', 'Cadastrado realizdo com sucesso!  Obrigado');
     }
 
     public function edit(Proprietario $proprietario)

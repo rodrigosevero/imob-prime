@@ -15,14 +15,12 @@ class ProprietarioRequest extends FormRequest
     {
         return [
             'nome_completo' => 'required|max:255',
-            'cpf' => 'required|max:14',
-            'nacionalidade' => 'required|max:255',
+            'cpf' => 'required|max:14',                        
+            'profissao' => 'required|max:255',
             'email' => 'required|email|max:255',
             'telefone_fixo' => 'max:15',
-            'telefone_celular' => 'required|max:15',
-            // 'profissao' => 'required|max:255',
-            // 'nome_conjuge' => 'max:255',            
-            // 'profissao_conjuge' => 'max:255',
+            'telefone_celular' => 'required|max:15',            
+            'estado_civil' => 'required|max:255',            
             'cep' => 'required|max:10',
             'logradouro' => 'required|max:255',
             'numero' => 'required|max:50',

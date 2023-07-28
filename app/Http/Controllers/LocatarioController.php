@@ -6,6 +6,7 @@ use App\Http\Requests\LocatarioRequest;
 use App\Http\Requests\ProprietarioController;
 use App\Models\Locatario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LocatarioController extends Controller
 {
@@ -13,6 +14,9 @@ class LocatarioController extends Controller
 
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
         $locatarios = Locatario::all();
         return view('locatarios.index', compact('locatarios'));
     }
@@ -29,12 +33,12 @@ class LocatarioController extends Controller
         // Salvar os dados do formulário no banco de dados
         $locatario = Locatario::create([
             'nome_completo' => $request->input('nome_completo'),
-            'cpf' => $request->input('cpf'),
-            'nacionalidade' => $request->input('nacionalidade'),
+            'cpf' => $request->input('cpf'),            
             'email' => $request->input('email'),
             'telefone_fixo' => $request->input('telefone_fixo'),
             'telefone_celular' => $request->input('telefone_celular'),
             'profissao' => $request->input('profissao'),
+            'estado_civil' => $request->input('estado_civil'),
             'nome_conjuge' => $request->input('nome_conjuge'),
             'cpf_conjuge' => $request->input('cpf_conjuge'),
             'rg_conjuge' => $request->input('rg_conjuge'),
