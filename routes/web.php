@@ -32,15 +32,12 @@ Route::get('/fiadores/create',  [App\Http\Controllers\FiadorController::class, '
 Route::post('/fiadores/store',  [App\Http\Controllers\FiadorController::class, 'store'])->name('fiadores.store');
 
 
-
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/proprietarios', [App\Http\Controllers\ProprietarioController::class, 'index'] )->name('proprietarios.index');
-Route::get('/locatario', [App\Http\Controllers\LocatarioController::class, 'index'] )->name('locatarios.index');
-Route::get('/locatario/edit', [App\Http\Controllers\LocatarioController::class, 'edit'] )->name('locatarios.edit');
-Route::delete('/locatario/destroy', [App\Http\Controllers\LocatarioController::class, 'destroy'] )->name('locatarios.destroy');
-Route::get('/fiadores', [App\Http\Controllers\FiadorController::class, 'index'] )->name('fiadores.index');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/proprietarios', [App\Http\Controllers\ProprietarioController::class, 'index'] )->name('proprietarios.index');
+    Route::get('/locatario', [App\Http\Controllers\LocatarioController::class, 'index'] )->name('locatarios.index');
+    Route::get('/locatario/edit', [App\Http\Controllers\LocatarioController::class, 'edit'] )->name('locatarios.edit');
+    Route::delete('/locatario/destroy', [App\Http\Controllers\LocatarioController::class, 'destroy'] )->name('locatarios.destroy');
+    Route::get('/fiadores', [App\Http\Controllers\FiadorController::class, 'index'] )->name('fiadores.index');
 
 

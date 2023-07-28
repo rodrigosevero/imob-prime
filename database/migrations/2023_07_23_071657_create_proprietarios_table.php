@@ -29,15 +29,19 @@ return new class extends Migration
             $table->string('complemento')->nullable();
             $table->string('cidade')->nullable();
             $table->string('estado')->nullable();
+
             $table->string('comprovante_endereco')->nullable();
 
-            $table->string('cnh_frente')->nullable();
-            $table->string('cnh_verso')->nullable();
-            $table->string('certidao_civil')->nullable();
-            $table->string('holerite_1')->nullable();
-            $table->string('holerite_2')->nullable();
-            $table->string('holerite_3')->nullable();
+            $table->string('rg_frente')->nullable();
+            $table->string('rg_verso')->nullable();
 
+            $table->string('matricula_imovel')->nullable();
+            $table->string('guia_iptu')->nullable();
+
+            $table->string('dados_bancarios')->nullable();
+            $table->string('uc_energisa')->nullable();
+            $table->string('matricula_agua')->nullable();
+            
             $table->timestamps();
             $table->softDeletes(); // Adicionando a coluna para Soft Deletes
         });

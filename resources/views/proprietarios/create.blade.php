@@ -237,7 +237,7 @@
                             </div>
 
                             <!-- Campos para documentos do proprietário -->
-                            <h4 class="mt-4">Documentos do Proprietário</h4>
+                            <h4 class="mt-4">Comprovante de endereço</h4>
 
                             <div class="mb-3">
                                 <label for="comprovante_endereco" class="form-label">Comprovante de Endereço</label>
@@ -248,6 +248,8 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            <h4 class="mt-4">Documentos Pessoais</h4>
 
                             <div class="mb-3">
                                 <label for="rg_frente" class="form-label">Frente do RG</label>
@@ -268,31 +270,48 @@
                             </div>
 
                             <!-- Campos para holerite do proprietário -->
-                            <h4 class="mt-4">Holerite ou comprovante de renda do Proprietário</h4>
+                            <h4 class="mt-4">Outros documentos</h4>
 
                             <div class="mb-3">
-                                <label for="holerite_1" class="form-label">Holerite 1</label>
-                                <input type="file" class="form-control @error('holerite_1') is-invalid @enderror"
-                                    id="holerite_1" name="holerite_1">
+                                <label for="matricula_imovel" class="form-label">Matrícula do Imóvel ou Contrato de Compra e venda</label>
+                                <input type="file" class="form-control @error('matricula_imovel') is-invalid @enderror"
+                                    id="matricula_imovel" name="matricula_imovel">
                                 @error('holerite_1')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="holerite_2" class="form-label">Holerite 2</label>
-                                <input type="file" class="form-control @error('holerite_2') is-invalid @enderror"
-                                    id="holerite_2" name="holerite_2">
-                                @error('holerite_2')
+                                <label for="guia_iptu" class="form-label">Guia IPTU </label>
+                                <input type="file" class="form-control @error('guia_iptu') is-invalid @enderror"
+                                    id="guia_iptu" name="guia_iptu">
+                                @error('guia_iptu')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="holerite_3" class="form-label">Holerite 3</label>
-                                <input type="file" class="form-control @error('holerite_3') is-invalid @enderror"
-                                    id="holerite_3" name="holerite_3">
-                                @error('holerite_3')
+                                <label for="holerite_3" class="form-label">Dados bancarios</label>
+                                <input type="file" class="form-control @error('dados_bancarios') is-invalid @enderror"
+                                    id="dados_bancarios" name="dados_bancarios">
+                                @error('dados_bancarios')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="uc_energisa" class="form-label">Unidade consumidora - Energisa</label>
+                                <input type="file" class="form-control @error('uc_energisa') is-invalid @enderror"
+                                    id="uc_energisa" name="uc_energisa">
+                                @error('uc_energisa')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="matricula_agua" class="form-label">Matricula - água</label>
+                                <input type="file" class="form-control @error('matricula_agua') is-invalid @enderror"
+                                    id="matricula_agua" name="matricula_agua">
+                                @error('matricula_agua')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

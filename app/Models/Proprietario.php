@@ -29,9 +29,14 @@ class Proprietario extends Model
         'complemento',
         'cidade',
         'estado',
-        'cnh_frente',
-        'cnh_verso',
+        'rg_frente',
+        'rg_verso',
         'comprovante_endereco',
+        'guia_iptu',
+        'matricula_imovel',
+        'dados_bancarios',
+        'uc_energisa',
+        'matricula_agua',
     ];
 
     // Definindo os campos protegidos contra atribuição em massa
