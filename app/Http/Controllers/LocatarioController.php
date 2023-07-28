@@ -116,7 +116,7 @@ class LocatarioController extends Controller
     {
         $filename = time() . '_' . $file->getClientOriginalName();
         // Defina o local onde deseja salvar os arquivos enviados
-        $folder = 'uploads/locatarios';
+        $folder = 'uploads/fiadores';
         $file->storeAs($folder, $filename, 'public');
         return $filename;
     }

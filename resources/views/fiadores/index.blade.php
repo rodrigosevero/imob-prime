@@ -56,31 +56,31 @@
                                             <!-- Botões para visualizar os anexos -->
                                             <h5 class="mt-4">Anexos:</h5>
                                             <p>
-                                                <a href="{{ asset('caminho/para/cnh_frente/' . $fiador->cnh_frente) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->cnh_frente) }}"
                                                     target="_blank">CNH Frente</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('caminho/para/cnh_verso/' . $fiador->cnh_verso) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->cnh_verso) }}"
                                                     target="_blank">CNH Verso</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('caminho/para/certidao_civil/' . $fiador->certidao_civil) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->certidao_civil) }}"
                                                     target="_blank">Certidão Civil</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('caminho/para/holerite_1/' . $fiador->holerite_1) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->holerite_1) }}"
                                                     target="_blank">Holerite 1</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('caminho/para/holerite_2/' . $fiador->holerite_2) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->holerite_2) }}"
                                                     target="_blank">Holerite 2</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('caminho/para/holerite_3/' . $fiador->holerite_3) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->holerite_3) }}"
                                                     target="_blank">Holerite 3</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('caminho/para/comprovante_endereco/' . $fiador->comprovante_endereco) }}"
+                                                <a href="{{ asset('storage/uploads/locatarios/' . $fiador->comprovante_endereco) }}"
                                                     target="_blank">Comprovante de Endereço</a>
                                             </p>
                                         </div>

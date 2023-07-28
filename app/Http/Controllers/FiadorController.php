@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FiadorRequest;
 use App\Models\Fiador;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class FiadorController extends Controller
 {
@@ -25,7 +26,7 @@ class FiadorController extends Controller
 
 
         // Salvar os dados do formulário no banco de dados
-        $locatario = Fiador::create([
+        $fiador = Fiador::create([
             'nome_completo' => $request->input('nome_completo'),
             'cpf' => $request->input('cpf'),
             'nacionalidade' => $request->input('nacionalidade'),
@@ -46,40 +47,41 @@ class FiadorController extends Controller
         ]);
 
         // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
+        if ($request->hasFile('comprovante_endereco')) {
+            $fiador->comprovante_endereco = $this->uploadFile($request->file('comprovante_endereco'));
+        }
+
         if ($request->hasFile('cnh_frente')) {
-            $cnhFrentePath = $request->file('cnh_frente')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['cnh_frente' => $cnhFrentePath]);
+            $fiador->cnh_frente = $this->uploadFile($request->file('cnh_frente'));
         }
 
         if ($request->hasFile('cnh_verso')) {
-            $cnhVersoPath = $request->file('cnh_verso')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['cnh_verso' => $cnhVersoPath]);
+            $fiador->cnh_verso = $this->uploadFile($request->file('cnh_verso'));
         }
 
         if ($request->hasFile('certidao_civil')) {
-            $certidaoCivilPath = $request->file('certidao_civil')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['certidao_civil' => $certidaoCivilPath]);
+            $fiador->certidao_civil = $this->uploadFile($request->file('certidao_civil'));
         }
 
         if ($request->hasFile('holerite_1')) {
-            $holerite1Path = $request->file('holerite_1')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['holerite_1' => $holerite1Path]);
+            $fiador->holerite_1 = $this->uploadFile($request->file('holerite_1'));
         }
 
         if ($request->hasFile('holerite_2')) {
-            $holerite2Path = $request->file('holerite_2')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['holerite_2' => $holerite2Path]);
+            $fiador->holerite_2 = $this->uploadFile($request->file('holerite_2'));
         }
 
         if ($request->hasFile('holerite_3')) {
-            $holerite3Path = $request->file('holerite_3')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['holerite_3' => $holerite3Path]);
+            $fiador->holerite_3 = $this->uploadFile($request->file('holerite_3'));
         }
 
-        if ($request->hasFile('comprovante_endereco')) {
-            $comprovanteEnderecoPath = $request->file('comprovante_endereco')->store('documentos');
-            Fiador::where('id', $locatario->id)->update(['comprovante_endereco' => $comprovanteEnderecoPath]);
+        if ($request->hasFile('matricula_imovel')) {
+            $fiador->matricula_imovel = $this->uploadFile($request->file('matricula_imovel'));
         }
+
+        // Salvar as alterações no objeto $proprietario
+        $fiador->save();
+        
 
 
         // Redirecionar para alguma página após o cadastro (opcional)
@@ -96,5 +98,14 @@ class FiadorController extends Controller
         $fiador->update($request->validated());
 
         return redirect()->route('fiadores.index')->with('success', 'Fiador atualizado com sucesso!');
+    }
+
+    private function uploadFile(UploadedFile $file)
+    {
+        $filename = time() . '_' . $file->getClientOriginalName();
+        // Defina o local onde deseja salvar os arquivos enviados
+        $folder = 'uploads/locatarios';
+        $file->storeAs($folder, $filename, 'public');
+        return $filename;
     }
 }
