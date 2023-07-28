@@ -6,6 +6,7 @@ use App\Http\Requests\LocatarioRequest;
 use App\Http\Requests\ProprietarioController;
 use App\Models\Locatario;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 
 class LocatarioController extends Controller
@@ -51,41 +52,37 @@ class LocatarioController extends Controller
             'estado' => $request->input('estado'),
         ]);
         
-        // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
+         // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
+         if ($request->hasFile('comprovante_endereco')) {
+            $locatario->comprovante_endereco = $this->uploadFile($request->file('comprovante_endereco'));
+        }
+
         if ($request->hasFile('cnh_frente')) {
-            $cnhFrentePath = $request->file('cnh_frente')->store('documentos');            
-            Locatario::where('id', $locatario->id)->update(['cnh_frente' => $cnhFrentePath]);
+            $locatario->cnh_frente = $this->uploadFile($request->file('cnh_frente'));
         }
 
         if ($request->hasFile('cnh_verso')) {
-            $cnhVersoPath = $request->file('cnh_verso')->store('documentos');            
-            Locatario::where('id', $locatario->id)->update(['cnh_verso' => $cnhVersoPath]);
+            $locatario->cnh_verso = $this->uploadFile($request->file('cnh_verso'));
         }
 
         if ($request->hasFile('certidao_civil')) {
-            $certidaoCivilPath = $request->file('certidao_civil')->store('documentos');            
-            Locatario::where('id', $locatario->id)->update(['certidao_civil' => $certidaoCivilPath]);
+            $locatario->certidao_civil = $this->uploadFile($request->file('certidao_civil'));
         }
 
         if ($request->hasFile('holerite_1')) {
-            $holerite1Path = $request->file('holerite_1')->store('documentos');
-            Locatario::where('id', $locatario->id)->update(['holerite_1' => $holerite1Path]);
+            $locatario->holerite_1 = $this->uploadFile($request->file('holerite_1'));
         }
 
         if ($request->hasFile('holerite_2')) {
-            $holerite2Path = $request->file('holerite_2')->store('documentos');            
-            Locatario::where('id', $locatario->id)->update(['holerite_2' => $holerite2Path]);
+            $locatario->holerite_2 = $this->uploadFile($request->file('holerite_2'));
         }
 
         if ($request->hasFile('holerite_3')) {
-            $holerite3Path = $request->file('holerite_3')->store('documentos');            
-            Locatario::where('id', $locatario->id)->update(['holerite_3' => $holerite3Path]);
+            $locatario->holerite_3 = $this->uploadFile($request->file('holerite_3'));
         }
 
-        if ($request->hasFile('comprovante_endereco')) {            
-            $comprovanteEnderecoPath = $request->file('comprovante_endereco')->store('documentos');            
-            Locatario::where('id', $locatario->id)->update(['comprovante_endereco' => $comprovanteEnderecoPath]);        
-        }
+        // Salvar as alterações no objeto $proprietario
+        $locatario->save();
 
         
         // Redirecionar para alguma página após o cadastro (opcional)
@@ -113,5 +110,14 @@ class LocatarioController extends Controller
 
         return redirect()->route('locatarios.index')->with('success', 'Locatário cadastrado com sucesso!');
 
+    }
+
+    private function uploadFile(UploadedFile $file)
+    {
+        $filename = time() . '_' . $file->getClientOriginalName();
+        // Defina o local onde deseja salvar os arquivos enviados
+        $folder = 'uploads/locatarios';
+        $file->storeAs($folder, $filename, 'public');
+        return $filename;
     }
 }

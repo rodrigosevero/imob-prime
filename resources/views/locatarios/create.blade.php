@@ -260,7 +260,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="cnh_frente" class="form-label">Frente da CNH</label>
+                                <label for="cnh_frente" class="form-label">Frente da CNH ou documento de indetificação</label>
                                 <input type="file" class="form-control @error('cnh_frente') is-invalid @enderror"
                                     id="cnh_frente" name="cnh_frente">
                                 @error('cnh_frente')
@@ -269,7 +269,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="cnh_verso" class="form-label">Verso da CNH</label>
+                                <label for="cnh_verso" class="form-label">Verso da CNH ou documento de indetificação</label>
                                 <input type="file" class="form-control @error('cnh_verso') is-invalid @enderror"
                                     id="cnh_verso" name="cnh_verso">
                                 @error('cnh_verso')
