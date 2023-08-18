@@ -15,12 +15,12 @@ class LocatarioRequest extends FormRequest
     {
         return [
             'nome_completo' => 'required|max:255',
-            'cpf' => 'required|max:14',
-            'nacionalidade' => 'required|max:255',
+            'cpf' => 'required|max:14',            
             'email' => 'required|email|max:255',
             'telefone_fixo' => 'max:15',
             'telefone_celular' => 'required|max:15',
             'profissao' => 'required|max:255',
+            'estado_civil' => 'required',
             'nome_conjuge' => 'max:255',
             'cpf_conjuge' => 'max:14',
             'rg_conjuge' => 'max:255',

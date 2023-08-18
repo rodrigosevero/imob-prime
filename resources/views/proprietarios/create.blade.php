@@ -95,24 +95,24 @@
 
                                 <div class="mb-6">
                                     <label for="estado_civil" class="form-label">Estado Civil</label>
-                                    <select  class="form-select @error('estado_civil') is-invalid @enderror" id="estado_civil" name="estado_civil">
+                                    <select class="form-select @error('estado_civil') is-invalid @enderror" id="estado_civil" name="estado_civil">
                                         <option></option>
-                                        <option @if (old('estado_civil') == "solteiro") selected @endif value="solteiro">Solteiro(a)</option>
-                                        <option @if (old('estado_civil') == "casado") selected @endif value="casado">Casado(a)</option>
-                                        <option @if (old('estado_civil') == "divorciado") selected @endif value="divorciado">Divorciado(a)</option>
-                                        <option @if (old('estado_civil') == "viuvo") selected @endif value="viuvo">Viúvo(a)</option>
-                                        <option @if (old('estado_civil') == "outro") selected @endif value="outro">Outro</option>
+                                        <option @if (old('estado_civil')=="solteiro" ) selected @endif value="solteiro">Solteiro(a)</option>
+                                        <option id="mostrar_conjuge" @if (old('estado_civil')=="casado" ) selected @endif value="casado">Casado(a)</option>
+                                        <option @if (old('estado_civil')=="divorciado" ) selected @endif value="divorciado">Divorciado(a)</option>
+                                        <option @if (old('estado_civil')=="viuvo" ) selected @endif value="viuvo">Viúvo(a)</option>
+                                        <option @if (old('estado_civil')=="outro" ) selected @endif value="outro">Outro</option>
                                     </select>@error('estado_civil')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <br>
                             </div>
-                            <br>
+                            <!-- <br>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="mostrar_conjuge">
                                 <label class="form-check-label" for="mostrar_conjuge">Possui Cônjuge</label>
-                            </div>
+                            </div> -->
 
                             <div id="campos_conjuge" style="display: none;">
                                 <!-- Campos para o cônjuge -->
@@ -157,6 +157,8 @@
                                 </div>
 
                             </div>
+
+
 
                             <!-- Campos para endereço -->
                             <h4 class="mt-4">Endereço</h4>
@@ -306,19 +308,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script>
-        // Script para mostrar/ocultar campos do cônjuge quando o checkbox for clicado
-        $(document).ready(function() {
-            // Quando o checkbox for clicado
-            $('#mostrar_conjuge').on('click', function() {
-                // Se estiver marcado, mostra os campos do cônjuge
-                if ($(this).prop('checked')) {
-                    $('#campos_conjuge').show();
-                } else {
-                    // Caso contrário, oculta os campos do cônjuge
-                    $('#campos_conjuge').hide();
-                }
-            });
-        });
+        // Obtenha referências aos elementos
+        const selectEstadoCivil = document.getElementById('estado_civil');
+        const divCamposConjuge = document.getElementById('campos_conjuge');
+
+        // Função para alternar a visibilidade da div campos_conjuge
+        function alternarVisibilidadeCamposConjuge() {
+            if (selectEstadoCivil.value === 'casado') {
+                divCamposConjuge.style.display = 'block'; // Mostra a div
+            } else {
+                divCamposConjuge.style.display = 'none'; // Oculta a div
+            }
+        }
+
+        // Chamada inicial para definir a visibilidade com base na opção selecionada
+        alternarVisibilidadeCamposConjuge();
+
+        // Adicione um ouvinte de evento ao elemento select
+        selectEstadoCivil.addEventListener('change', alternarVisibilidadeCamposConjuge);
     </script>
 </body>
 

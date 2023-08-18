@@ -37,12 +37,12 @@
                                 </div>
                                 <div class="modal-body">
                                     <p><strong>Nome Completo:</strong> {{ $proprietario->nome_completo }}</p>
-                                    <p><strong>CPF:</strong> {{ $proprietario->cpf }}</p>
-                                    <p><strong>Nacionalidade:</strong> {{ $proprietario->nacionalidade }}</p>
+                                    <p><strong>CPF:</strong> {{ $proprietario->cpf }}</p>                                    
                                     <p><strong>E-mail:</strong> {{ $proprietario->email }}</p>
                                     <p><strong>Telefone Fixo:</strong> {{ $proprietario->telefone_fixo }}</p>
                                     <p><strong>Telefone Celular:</strong> {{ $proprietario->telefone_celular }}</p>
                                     <p><strong>Profissão:</strong> {{ $proprietario->profissao }}</p>
+                                    <p><strong>Estado civil:</strong> {{ $proprietario->estado_civil }}</p>
                                     <p><strong>Nome do Cônjuge:</strong> {{ $proprietario->nome_conjuge }}</p>
                                     <p><strong>CPF do Cônjuge:</strong> {{ $proprietario->cpf_conjuge }}</p>
                                     <p><strong>RG do Cônjuge:</strong> {{ $proprietario->rg_conjuge }}</p>
@@ -60,6 +60,7 @@
                                     <p>
                                         <a href="{{ asset('storage/uploads/proprietarios/' . $proprietario->rg_frente) }}" target="_blank">RG Frente</a>
                                     </p>
+                                    
                                     <p>
                                         <a href="{{ asset('storage/uploads/proprietarios/' . $proprietario->rg_verso) }}" target="_blank">RG Verso</a>
                                     </p>

@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'rodrigoseverodev@gmail.com',
             'password' => bcrypt('12345678')
         ]);
+        
+        \App\Models\User::create([
+            'name' => 'JOSEILTON DA COSTA NARDES NASCIMENTO',
+            'email' => 'cadastro.imobprime@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
 
     }
 }

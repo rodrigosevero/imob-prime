@@ -6,6 +6,8 @@ use App\Http\Requests\FiadorRequest;
 use App\Models\Fiador;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use App\Mail\Cadastro;
+use Illuminate\Support\Facades\Mail;
 
 class FiadorController extends Controller
 {
@@ -28,12 +30,12 @@ class FiadorController extends Controller
         // Salvar os dados do formulário no banco de dados
         $fiador = Fiador::create([
             'nome_completo' => $request->input('nome_completo'),
-            'cpf' => $request->input('cpf'),
-            'nacionalidade' => $request->input('nacionalidade'),
+            'cpf' => $request->input('cpf'),            
             'email' => $request->input('email'),
             'telefone_fixo' => $request->input('telefone_fixo'),
             'telefone_celular' => $request->input('telefone_celular'),
             'profissao' => $request->input('profissao'),
+            'estado_civil' => $request->input('estado_civil'),
             'nome_conjuge' => $request->input('nome_conjuge'),
             'cpf_conjuge' => $request->input('cpf_conjuge'),
             'rg_conjuge' => $request->input('rg_conjuge'),
@@ -81,11 +83,20 @@ class FiadorController extends Controller
 
         // Salvar as alterações no objeto $proprietario
         $fiador->save();
+
+        $data = [
+            'nome' => $request->input('nome_completo'),            
+            'tipo' => 'Fiador',
+            'data_pedido' => now()->format('d/m/Y'),
+        ];
+
+        Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
+        Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
         
 
 
         // Redirecionar para alguma página após o cadastro (opcional)
-        return redirect()->back()->with('success', 'Locatário cadastrado com sucesso!');
+        return redirect()->back()->with('success', 'Fiador cadastrado com sucesso!');
     }
 
     public function edit(Fiador $fiador)

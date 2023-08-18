@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\Cadastro;
+use Illuminate\Support\Facades\Mail;
 
 class ProprietarioController extends Controller
 {
@@ -38,6 +40,10 @@ class ProprietarioController extends Controller
             'telefone_celular' => $request->input('telefone_celular'),
             'profissao' => $request->input('profissao'),
             'estado_civil' => $request->input('estado_civil'),
+            'nome_conjuge' => $request->input('nome_conjuge'),
+            'cpf_conjuge' => $request->input('cpf_conjuge'),
+            'rg_conjuge' => $request->input('rg_conjuge'),
+            'profissao_conjuge' => $request->input('profissao_conjuge'),
             'cep' => $request->input('cep'),
             'logradouro' => $request->input('logradouro'),
             'numero' => $request->input('numero'),
@@ -82,7 +88,17 @@ class ProprietarioController extends Controller
         // Salvar as alterações no objeto $proprietario
         $proprietario->save();
         // Redirecionar para alguma página após o cadastro (opcional)
-        return redirect()->back()->with('success', 'Cadastrado realizdo com sucesso!  Obrigado');
+
+        $data = [
+            'nome' => $request->input('nome_completo'),            
+            'tipo' => 'Proprietário',
+            'data_pedido' => now()->format('d/m/Y'),
+        ];
+
+        // Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
+        Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
+        
+        return redirect()->back()->with('success', 'Proprietário cadastrado com sucesso!');
     }
 
     public function edit(Proprietario $proprietario)
@@ -97,7 +113,7 @@ class ProprietarioController extends Controller
         // Atualizar os dados do formulário no banco de dados
         $proprietario->update($data);
 
-        return redirect()->route('proprietarios.index')->with('success', 'Seu atualizado foi realizado com sucesso! Obrigado.');
+        return redirect()->route('proprietarios.index')->with('success', 'Seu cadastro atualizado foi realizado com sucesso! Obrigado.');
     }
 
     private function uploadFile(UploadedFile $file)
@@ -109,6 +125,5 @@ class ProprietarioController extends Controller
         return $filename;
     }
 
-
-    // Adicionar outros métodos, como show e destroy, se necessário.
+    
 }

@@ -8,6 +8,8 @@ use App\Models\Locatario;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Cadastro;
+use Illuminate\Support\Facades\Mail;
 
 class LocatarioController extends Controller
 {
@@ -81,8 +83,19 @@ class LocatarioController extends Controller
             $locatario->holerite_3 = $this->uploadFile($request->file('holerite_3'));
         }
 
+        
+
         // Salvar as alterações no objeto $proprietario
         $locatario->save();
+
+        $data = [
+            'nome' => $request->input('nome_completo'),            
+            'tipo' => 'Locatário',
+            'data_pedido' => now()->format('d/m/Y'),
+        ];
+
+        Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
+        Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
 
         
         // Redirecionar para alguma página após o cadastro (opcional)

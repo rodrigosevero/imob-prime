@@ -24,6 +24,7 @@ class Fiador extends Model
         'telefone_fixo',
         'telefone_celular',
         'profissao',
+        'estado_civil',
         'nome_conjuge', 
         'cpf_conjuge',  
         'rg_conjuge',

@@ -23,6 +23,11 @@ return new class extends Migration
             $table->string('profissao')->nullable();
             $table->string('estado_civil')->nullable();
 
+            $table->string('nome_conjuge')->nullable(); // Novo campo para o nome do cônjuge
+            $table->string('cpf_conjuge')->nullable();  // Novo campo para o CPF do cônjuge            
+            $table->string('rg_conjuge')->nullable();  // Novo campo para o CPF do cônjuge            
+            $table->string('profissao_conjuge')->nullable();
+
             $table->string('cep')->nullable();
             $table->string('logradouro')->nullable();
             $table->string('numero')->nullable();
