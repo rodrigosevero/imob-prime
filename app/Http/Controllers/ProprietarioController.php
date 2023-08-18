@@ -95,7 +95,7 @@ class ProprietarioController extends Controller
             'data_pedido' => now()->format('d/m/Y'),
         ];
 
-        // Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
+        Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
         Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
         
         return redirect()->back()->with('success', 'Proprietário cadastrado com sucesso!');
