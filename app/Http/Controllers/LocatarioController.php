@@ -99,8 +99,8 @@ class LocatarioController extends Controller
             'data_pedido' => now()->format('d/m/Y'),
         ];
 
-        Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
-        Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
+        // Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
+        // Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
 
 
         // Redirecionar para alguma página após o cadastro (opcional)
@@ -133,7 +133,7 @@ class LocatarioController extends Controller
     {
         $filename = time() . '_' . $file->getClientOriginalName();
         // Defina o local onde deseja salvar os arquivos enviados
-        $folder = 'uploads/fiadores';
+        $folder = 'uploads';
         $file->storeAs($folder, $filename, 'public');
         return $filename;
     }

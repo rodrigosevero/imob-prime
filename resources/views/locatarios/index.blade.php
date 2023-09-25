@@ -51,16 +51,18 @@
                                         <div class="modal-body">
                                             <p><strong>Nome Completo:</strong> {{ $locatario->nome_completo }}</p>
                                             <p><strong>CPF:</strong> {{ $locatario->cpf }}</p>
-                                            <p><strong>Nacionalidade:</strong> {{ $locatario->nacionalidade }}</p>
                                             <p><strong>E-mail:</strong> {{ $locatario->email }}</p>
                                             <p><strong>Telefone Fixo:</strong> {{ $locatario->telefone_fixo }}</p>
                                             <p><strong>Telefone Celular:</strong> {{ $locatario->telefone_celular }}</p>
                                             <p><strong>Profissão:</strong> {{ $locatario->profissao }}</p>
-                                            <p><strong>Nome do Cônjuge:</strong> {{ $locatario->nome_conjuge }}</p>
-                                            <p><strong>CPF do Cônjuge:</strong> {{ $locatario->cpf_conjuge }}</p>
-                                            <p><strong>RG do Cônjuge:</strong> {{ $locatario->rg_conjuge }}</p>
-                                            <p><strong>Profissão do Cônjuge:</strong> {{ $locatario->profissao_conjuge }}
-                                            </p>
+
+                                            @if ($locatario->estado_civil == 'casado')
+                                                <p><strong>Nome do Cônjuge:</strong> {{ $locatario->nome_conjuge }}</p>
+                                                <p><strong>CPF do Cônjuge:</strong> {{ $locatario->cpf_conjuge }}</p>
+                                                <p><strong>RG do Cônjuge:</strong> {{ $locatario->rg_conjuge }}</p>
+                                                <p><strong>Profissão do Cônjuge:</strong> {{ $locatario->profissao_conjuge }}</p>
+                                            @endif
+
                                             <p><strong>CEP:</strong> {{ $locatario->cep }}</p>
                                             <p><strong>Logradouro:</strong> {{ $locatario->logradouro }}</p>
                                             <p><strong>Número:</strong> {{ $locatario->numero }}</p>
@@ -71,31 +73,31 @@
                                             <!-- Botões para visualizar os anexos -->
                                             <h5 class="mt-4">Anexos:</h5>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->cnh_frente) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->cnh_frente) }}"
                                                     target="_blank">CNH Frente</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->cnh_verso) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->cnh_verso) }}"
                                                     target="_blank">CNH Verso</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->certidao_civil) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->certidao_civil) }}"
                                                     target="_blank">Certidão Civil</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->holerite_1) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->holerite_1) }}"
                                                     target="_blank">Holerite 1</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->holerite_2) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->holerite_2) }}"
                                                     target="_blank">Holerite 2</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->holerite_3) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->holerite_3) }}"
                                                     target="_blank">Holerite 3</a>
                                             </p>
                                             <p>
-                                                <a href="{{ asset('storage/uploads/locatarios/' . $locatario->comprovante_endereco) }}"
+                                                <a href="{{ asset('storage/uploads/' . $locatario->comprovante_endereco) }}"
                                                     target="_blank">Comprovante de Endereço</a>
                                             </p>
                                         </div>
