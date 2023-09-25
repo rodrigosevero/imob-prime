@@ -40,8 +40,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p><strong>Nome Completo:</strong> {{ $fiador->nome_completo }}</p>
-                                            <p><strong>CPF:</strong> {{ $fiador->cpf }}</p>
-                                            <p><strong>Nacionalidade:</strong> {{ $fiador->nacionalidade }}</p>
+                                            <p><strong>CPF:</strong> {{ $fiador->cpf }}</p>                                            
                                             <p><strong>E-mail:</strong> {{ $fiador->email }}</p>
                                             <p><strong>Telefone Fixo:</strong> {{ $fiador->telefone_fixo }}</p>
                                             <p><strong>Telefone Celular:</strong> {{ $fiador->telefone_celular }}</p>

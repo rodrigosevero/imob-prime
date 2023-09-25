@@ -46,6 +46,10 @@ class FiadorController extends Controller
             'complemento' => $request->input('complemento'),
             'cidade' => $request->input('cidade'),
             'estado' => $request->input('estado'),
+            'nome_empresa' => $request->input('nome_empresa'),
+            'telefone_empresa' => $request->input('telefone_empresa'),
+            'endereco_empresa' => $request->input('endereco_empresa'),
+            'valor_renda' => $request->input('valor_renda')
         ]);
 
         // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
@@ -90,13 +94,13 @@ class FiadorController extends Controller
             'data_pedido' => now()->format('d/m/Y'),
         ];
 
-        Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
-        Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
+        // Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
+        // Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
         
 
 
         // Redirecionar para alguma página após o cadastro (opcional)
-        return redirect()->back()->with('success', 'Fiador cadastrado com sucesso!');
+        return redirect()->back()->with('success', 'Cadastrado realizado com sucesso! Obrigado');
     }
 
     public function edit(Fiador $fiador)

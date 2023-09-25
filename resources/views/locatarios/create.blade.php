@@ -412,23 +412,14 @@
                                 @enderror
                             </div>
 
-
-
-                            {{-- <h4 class="mt-4">Imóvel</h4>
-
-                            <div class="mb-3">
-                                <label for="matricula_imovel" class="form-label">Matrícula do Imóvel ou Certidão de Inteiro Teor</label>
-                                <input type="file"
-                                    class="form-control @error('matricula_imovel') is-invalid @enderror"
-                                    id="matricula_imovel" name="matricula_imovel">
-                                @error('matricula_imovel')
-                                    <div class="invalid-feedback">{{ $message }}
-                    </div>
-                    @enderror
-                </div> --}}
-
-
-
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-warning">
+                                        Aviso LGPD: Ao preencher, você concorda com o tratamento dos seus dados pela Imobiliária Prime conforme a LGPD. Seus dados serão usados apenas para fins deste serviço e não serão compartilhados sem consentimento. Saiba mais <a href="https://www.gov.br/pt-br/lgpd">aqui</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Cadastrar Locatário</button>
                                 <a href="{{ url('/') }}" class="btn btn-secondary">Voltar</a>

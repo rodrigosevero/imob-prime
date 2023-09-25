@@ -39,6 +39,10 @@ class FiadorRequest extends FormRequest
             'holerite_3' => 'required|',            
             'comprovante_endereco' => 'required|',
             'matricula_imovel' => 'required|',
+            'nome_empresa' => 'required',
+            'telefone_empresa' => 'required',
+            'endereco_empresa' => 'required',
+            'valor_renda' => 'required|numeric'
 
         ];
     }

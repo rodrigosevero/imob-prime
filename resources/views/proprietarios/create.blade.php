@@ -33,6 +33,10 @@
                         <form method="POST" action="{{ route('proprietarios.store') }}" enctype="multipart/form-data">
                             @csrf
 
+                            <div class="col-md-12">
+                                <h2>Dados Pessoais</h2>
+                            </div>
+                                
                             <!-- Campos para dados do proprietário -->
                             <div class="mb-3">
                                 <label for="nome_completo" class="form-label">Nome Completo</label>
@@ -339,6 +343,13 @@
                             </div>
 
 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-warning">
+                                        Aviso LGPD: Ao preencher, você concorda com o tratamento dos seus dados pela Imobiliária Prime conforme a LGPD. Seus dados serão usados apenas para fins deste serviço e não serão compartilhados sem consentimento. Saiba mais <a href="https://www.gov.br/pt-br/lgpd">aqui</a>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Cadastrar Proprietário</button>
