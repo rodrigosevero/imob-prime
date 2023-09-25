@@ -56,7 +56,7 @@ class LocatarioController extends Controller
             'nome_empresa' => $request->input('nome_empresa'),
             'telefone_empresa' => $request->input('telefone_empresa'),
             'endereco_empresa' => $request->input('endereco_empresa'),
-            'valor_renda' => $request->input('valor_renda')
+            'valor_renda' => $request->input('valor_renda')            
         ]);
 
         // Fazendo o upload dos arquivos e salvando os nomes no banco de dados

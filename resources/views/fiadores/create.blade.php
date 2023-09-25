@@ -406,10 +406,23 @@
                                 </div>
                             </div>
 
-                            
+                            <h4 class="mt-4">Endereço da garantia</h4>
+
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="endereco_garantia" class="form-label">Endereço completo da garantia</label>
+                                    <input type="text"
+                                        class="form-control @error('endereco_garantia') is-invalid @enderror" id="endereco_garantia"
+                                        name="endereco_garantia" value="{{ old('endereco_garantia') }}">
+                                    @error('endereco_garantia')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
 
                             <div class="mb-3">
-                                <label for="holerite_3" class="form-label">Matrícula do imóvel atualizada:</label>
+                                <label for="holerite_3" class="form-label">Certidão de inteiro teor e ônus atualizada:</label>
                                 <input type="file"
                                     class="form-control @error('matricula_imovel') is-invalid @enderror"
                                     id="matricula_imovel" name="matricula_imovel">

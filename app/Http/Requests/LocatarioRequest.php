@@ -41,7 +41,7 @@ class LocatarioRequest extends FormRequest
             'nome_empresa' => 'required',
             'telefone_empresa' => 'required',
             'endereco_empresa' => 'required',
-            'valor_renda' => 'required|numeric'
+            'valor_renda' => 'required|numeric'            
         ];
     }
 
@@ -86,6 +86,8 @@ class LocatarioRequest extends FormRequest
             'holerite_2' => 'Segundo Holerite',
             'holerite_3' => 'Terceiro Holerite',            
             'comprovante_endereco' => 'Comprovante de Endereço',
+            'valor_renda' => 'Valor da renda'
+            
         ];
     }
 }

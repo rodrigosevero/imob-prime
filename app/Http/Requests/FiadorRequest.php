@@ -42,8 +42,8 @@ class FiadorRequest extends FormRequest
             'nome_empresa' => 'required',
             'telefone_empresa' => 'required',
             'endereco_empresa' => 'required',
-            'valor_renda' => 'required|numeric'
-
+            'valor_renda' => 'required|numeric',
+            'endereco_garantia' => 'required'
         ];
     }
 
