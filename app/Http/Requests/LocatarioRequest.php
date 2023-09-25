@@ -38,6 +38,10 @@ class LocatarioRequest extends FormRequest
             'holerite_2' => 'required|',
             'holerite_3' => 'required|',            
             'comprovante_endereco' => 'required|',
+            'nome_empresa' => 'required',
+            'telefone_empresa' => 'required',
+            'endereco_empresa' => 'required',
+            'valor_renda' => 'required'
         ];
     }
 

@@ -64,6 +64,22 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="cnh_frente" class="form-label">Frente da CNH</label>
+                                <input type="file" class="form-control @error('cnh_frente') is-invalid @enderror" id="cnh_frente" name="cnh_frente">
+                                @error('cnh_frente')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="cnh_verso" class="form-label">Verso da CNH</label>
+                                <input type="file" class="form-control @error('cnh_verso') is-invalid @enderror" id="cnh_verso" name="cnh_verso">
+                                @error('cnh_verso')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="email" class="form-label">E-mail</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                                 @error('email')
@@ -95,15 +111,28 @@
 
 
                             <div class="mb-6">
-                                <label for="estado_civil" class="form-label">Estado Civil</label>
-                                <select class="form-select @error('estado_civil') is-invalid @enderror" id="estado_civil" name="estado_civil">
-                                    <option></option>
-                                    <option @if (old('estado_civil')=="solteiro" ) selected @endif value="solteiro">Solteiro(a)</option>
-                                    <option id="mostrar_conjuge" @if (old('estado_civil')=="casado" ) selected @endif value="casado">Casado(a)</option>
-                                    <option @if (old('estado_civil')=="divorciado" ) selected @endif value="divorciado">Divorciado(a)</option>
-                                    <option @if (old('estado_civil')=="viuvo" ) selected @endif value="viuvo">Viúvo(a)</option>
-                                    <option @if (old('estado_civil')=="outro" ) selected @endif value="outro">Outro</option>
-                                </select>@error('estado_civil')
+                                <div class="mb-3">
+                                    <label for="estado_civil" class="form-label">Estado Civil</label>
+                                    <select class="form-select @error('estado_civil') is-invalid @enderror" id="estado_civil" name="estado_civil">
+                                        <option></option>
+                                        <option @if (old('estado_civil')=="solteiro" ) selected @endif value="solteiro">Solteiro(a)</option>
+                                        <option id="mostrar_conjuge" @if (old('estado_civil')=="casado" ) selected @endif value="casado">Casado(a)</option>
+                                        <option @if (old('estado_civil')=="divorciado" ) selected @endif value="divorciado">Divorciado(a)</option>
+                                        <option @if (old('estado_civil')=="viuvo" ) selected @endif value="viuvo">Viúvo(a)</option>
+                                        <option @if (old('estado_civil')=="outro" ) selected @endif value="outro">Outro</option>
+                                    </select>@error('estado_civil')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="mb-3">
+                                <label for="certidao_civil" class="form-label">Certidão Civil (nascimento ou
+                                    casamento)</label>
+                                <input type="file" class="form-control @error('certidao_civil') is-invalid @enderror" id="certidao_civil" name="certidao_civil">
+                                @error('certidao_civil')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -213,49 +242,18 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Campos para documentos do fiador -->
-                            <h4 class="mt-4">Documentos do Fiador</h4>
-
-                            <div class="mb-3">
-                                <label for="comprovante_endereco" class="form-label">Comprovante de Endereço</label>
-                                <input type="file" class="form-control @error('comprovante_endereco') is-invalid @enderror" id="comprovante_endereco" name="comprovante_endereco">
-                                @error('comprovante_endereco')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+                                <div class="mb-3">
+                                    <label for="comprovante_endereco" class="form-label">Comprovante de Endereço</label>
+                                    <input type="file" class="form-control @error('comprovante_endereco') is-invalid @enderror" id="comprovante_endereco" name="comprovante_endereco">
+                                    @error('comprovante_endereco')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>                                                                                                       
 
                             <div class="mb-3">
-                                <label for="cnh_frente" class="form-label">Frente da CNH</label>
-                                <input type="file" class="form-control @error('cnh_frente') is-invalid @enderror" id="cnh_frente" name="cnh_frente">
-                                @error('cnh_frente')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="cnh_verso" class="form-label">Verso da CNH</label>
-                                <input type="file" class="form-control @error('cnh_verso') is-invalid @enderror" id="cnh_verso" name="cnh_verso">
-                                @error('cnh_verso')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="certidao_civil" class="form-label">Certidão Civil (nascimento ou
-                                    casamento)</label>
-                                <input type="file" class="form-control @error('certidao_civil') is-invalid @enderror" id="certidao_civil" name="certidao_civil">
-                                @error('certidao_civil')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <!-- Campos para holerite do fiador -->
-                            <h4 class="mt-4">Holerite ou comprovante de renda do Fiador</h4>
-
-                            <div class="mb-3">
-                                <label for="holerite_1" class="form-label">Holerite 1</label>
+                                <label for="holerite_1" class="form-label">Comprovante de renda 1</label>
                                 <input type="file" class="form-control @error('holerite_1') is-invalid @enderror" id="holerite_1" name="holerite_1">
                                 @error('holerite_1')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -263,7 +261,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="holerite_2" class="form-label">Holerite 2</label>
+                                <label for="holerite_2" class="form-label">Comprovante de renda 2</label>
                                 <input type="file" class="form-control @error('holerite_2') is-invalid @enderror" id="holerite_2" name="holerite_2">
                                 @error('holerite_2')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -271,7 +269,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="holerite_3" class="form-label">Holerite 3</label>
+                                <label for="holerite_3" class="form-label">Comprovante de renda 3</label>
                                 <input type="file" class="form-control @error('holerite_3') is-invalid @enderror" id="holerite_3" name="holerite_3">
                                 @error('holerite_3')
                                 <div class="invalid-feedback">{{ $message }}</div>

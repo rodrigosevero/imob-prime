@@ -25,8 +25,8 @@ class Locatario extends Model
         'telefone_celular',
         'profissao',
         'estado_civil',
-        'nome_conjuge', 
-        'cpf_conjuge',  
+        'nome_conjuge',
+        'cpf_conjuge',
         'rg_conjuge',
         'profissao_conjuge',
         'cep',
@@ -42,6 +42,10 @@ class Locatario extends Model
         'holerite_2',
         'holerite_3',
         'comprovante_endereco',
+        'nome_empresa',
+        'telefone_empresa',
+        'endereco_empresa',
+        'valor_renda'
     ];
 
     // Definindo os campos protegidos contra atribuição em massa

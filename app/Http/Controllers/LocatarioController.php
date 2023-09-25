@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-Use Laracasts\Flash\Flash;
+
+use Laracasts\Flash\Flash;
 use App\Http\Requests\LocatarioRequest;
 use App\Http\Requests\ProprietarioController;
 use App\Models\Locatario;
@@ -31,12 +32,12 @@ class LocatarioController extends Controller
 
     public function store(LocatarioRequest $request)
     {
-        
+
 
         // Salvar os dados do formulário no banco de dados
         $locatario = Locatario::create([
             'nome_completo' => $request->input('nome_completo'),
-            'cpf' => $request->input('cpf'),            
+            'cpf' => $request->input('cpf'),
             'email' => $request->input('email'),
             'telefone_fixo' => $request->input('telefone_fixo'),
             'telefone_celular' => $request->input('telefone_celular'),
@@ -52,10 +53,14 @@ class LocatarioController extends Controller
             'complemento' => $request->input('complemento'),
             'cidade' => $request->input('cidade'),
             'estado' => $request->input('estado'),
+            'nome_empresa' => $request->input('nome_empresa'),
+            'telefone_empresa' => $request->input('telefone_empresa'),
+            'endereco_empresa' => $request->input('endereco_empresa'),
+            'valor_renda' => $request->input('valor_renda')
         ]);
-        
-         // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
-         if ($request->hasFile('comprovante_endereco')) {
+
+        // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
+        if ($request->hasFile('comprovante_endereco')) {
             $locatario->comprovante_endereco = $this->uploadFile($request->file('comprovante_endereco'));
         }
 
@@ -83,13 +88,13 @@ class LocatarioController extends Controller
             $locatario->holerite_3 = $this->uploadFile($request->file('holerite_3'));
         }
 
-        
+
 
         // Salvar as alterações no objeto $proprietario
         $locatario->save();
 
         $data = [
-            'nome' => $request->input('nome_completo'),            
+            'nome' => $request->input('nome_completo'),
             'tipo' => 'Locatário',
             'data_pedido' => now()->format('d/m/Y'),
         ];
@@ -97,7 +102,7 @@ class LocatarioController extends Controller
         Mail::to('cadastro.imobprime@gmail.com')->send(new Cadastro($data));
         Mail::to('rodrigoseverodev@gmail.com')->send(new Cadastro($data));
 
-        
+
         // Redirecionar para alguma página após o cadastro (opcional)
         return redirect()->back()->with('success', 'Locatário cadastrado com sucesso!');
     }
@@ -122,7 +127,6 @@ class LocatarioController extends Controller
         }
 
         return redirect()->route('locatarios.index')->with('success', 'Locatário cadastrado com sucesso!');
-
     }
 
     private function uploadFile(UploadedFile $file)
