@@ -104,7 +104,7 @@ class LocatarioController extends Controller
 
 
         // Redirecionar para alguma página após o cadastro (opcional)
-        return redirect()->back()->with('success', 'Locatário cadastrado com sucesso!');
+        return redirect()->back()->with('success', 'Cadastrado com sucesso! Obrigado.   ');
     }
 
     public function edit(Locatario $locatario)
